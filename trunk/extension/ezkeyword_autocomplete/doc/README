@@ -1,0 +1,39 @@
+Autocomplete on eZ Keyword datatype
+===================================
+
+Description
+-----------
+Adds an autocomplete feature on the Keywords datatype ( ezkeyword ) during content edition, based on YUI's Autocomplete component.
+
+Features
+--------
+
+* Previously entered keywords will be shown in a suggestion drop down
+* An already picked up keyword is not picked again
+* Added a policy to the backend ajax view, plus a policy omit list entry. This gives the possibility to restrict access to this feature if required
+* ezini check in the template will bypass the template cache, so that no template cache clearing is required when modifying something in datatype.ini
+* keywords appearing twice in the database are unicified and won't appear as duplicates in the suggestion drop down
+* AutocompleteKeywordsPerContentClass = disabled by default now
+
+Configuration
+-------------
+
+New configuration directive will let one :
+
+* Choose whether keywords should be picked from the global keyword scope or per content class
+* Choose the maximum amount of autocomplete suggestions
+
+You will find new settings in datatype.ini :
+
+::
+
+  [eZKeywordSettings]
+  # Maximum amount of matching keywords returned when autocompleting them.
+  # This number should be high enough to fully leverage the 'queryMatchSubset' parameter of YUI's autocomplete component,
+  # and consequently drastically reduce the amount of round-trips to the live server.
+  MaxAutocompleteResults=100
+  #
+  # Decide whether to autocomplete keywords per content class or from the global keyword scope.
+  # Possible values : enabled OR disabled
+  AutocompleteKeywordsPerContentClass=enabled
+  

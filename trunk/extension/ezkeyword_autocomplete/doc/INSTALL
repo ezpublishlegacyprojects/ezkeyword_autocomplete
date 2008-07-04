@@ -1,0 +1,39 @@
+Autocomplete on eZ Keyword datatype - Installation procedure
+============================================================
+
+
+Setup
+-----
+
+
+* Place the freshly checked out extension/ezkeyword_autocomplete extension in your extension folder.
+* Activate the extension. This can typically be done in settings/override/site.ini.append.php, as shown below
+
+::
+
+  [ExtensionSettings]
+  ActiveExtensions[]=ezdhtml
+  ActiveExtensions[]=ezflow
+  ActiveExtensions[]=ezodf
+  ActiveExtensions[]=ezwebin
+  ActiveExtensions[]=ezkeyword_autocomplete
+
+
+* clear all caches ( or more granularily ). You can do so by running, from eZ Publish's root folder, in a command line prompt : 
+
+::
+
+ php bin/php/ezcache.php -s<siteaccess_name> --clear-all
+  
+Where <siteaccess_name> is the name of a siteaccess using the content ( DB + var directory ) you are enabling the extension for.
+
+* WARNING : this extension is based on the template override system. The edit template for the ezkeyword datatype is overridden. If you already did so, make sure the hereby provided template is loaded first. This can often be achieved by declaring the ezkeyword_autocomplete extension before your extension in the ActiveExtensions[] configuration array.
+
+Testing & Usage
+---------------
+* make sure you have existing keywords in your content.
+* edit an object having a 'Keywords' attribute.
+* start typing in a few letters, the suggestion drop-down will appear right below the input text if already existing keywords match the letters you just typed in.
+* adding a comma ( ',' ) at the end of the typed in letters without having picked a suggestion from the drop-down will abort the autocompletion procedure, and start a new one.
+* alternatively, you can pick one of the suggested keywords, it will be appended to the list of keywords in the keywords field, followed by the separator ( comma )
+* if the keyword you picked had already been picked up previously during this edition, it will not appear twice in the edit field. More, the input field will blink once, signifying this. 
