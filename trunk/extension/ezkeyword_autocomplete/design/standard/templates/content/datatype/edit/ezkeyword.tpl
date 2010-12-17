@@ -18,11 +18,11 @@
 </div>
 
 <script type="text/javascript">
-{def $max_autocomplete_results = ezini( 'eZKeywordSettings', 'MaxAutocompleteResults', 'datatype.ini',, true() )
+{def $max_autocomplete_results = ezini( 'eZKeywordSettings', 'MaxAutocompleteResults', 'datatype.ini' )
 	 $autocomplete_per_content_class = false()}
 
 
-{if eq( ezini( 'eZKeywordSettings', 'AutocompleteKeywordsPerContentClass', 'datatype.ini',, true() ), 'enabled' )}
+{if eq( ezini( 'eZKeywordSettings', 'AutocompleteKeywordsPerContentClass', 'datatype.ini' ), 'enabled' )}
 	{set $autocomplete_per_content_class = true()}
 	{def $content_class_id = $attribute.object.contentclass_id}
 {else}
