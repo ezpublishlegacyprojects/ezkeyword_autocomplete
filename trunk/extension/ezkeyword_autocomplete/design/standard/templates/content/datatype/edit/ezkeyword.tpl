@@ -2,6 +2,7 @@
 <link type="text/css" rel="stylesheet" href={'stylesheets/autocomplete/assets/skins/ez/autocomplete.css'|ezdesign}>
 
 <script type="text/javascript" src={"javascript/yahoo-dom-event/yahoo-dom-event.js"|ezdesign}></script>
+<script type="text/javascript" src={"javascript/datasource/datasource-min.js"|ezdesign}></script>
 <script type="text/javascript" src={"javascript/connection/connection-min.js"|ezdesign}></script>
 <script type="text/javascript" src={"javascript/animation/animation-min.js"|ezdesign}></script>
 <script type="text/javascript" src={"javascript/json/json-min.js"|ezdesign}></script>
@@ -33,6 +34,7 @@
 YAHOO.namespace( "eZPublish.Datatypes.eZKeyword" );
 YAHOO.eZPublish.Datatypes.eZKeyword.ACJson{$container_id}{literal} = new function(){
     this.oACDS = new YAHOO.widget.DS_XHR( "{/literal}{$ajax_back_end_url}{literal}", ["ResultSet.Result","Keyword"] );
+    this.oACDS.responseType = YAHOO.widget.DS_XHR.TYPE_JSON;
     this.oACDS.queryMatchContains = true;
     this.oACDS.queryMatchSubset = true;
     this.oACDS.queryMatchCase = false;
@@ -46,8 +48,8 @@ YAHOO.eZPublish.Datatypes.eZKeyword.ACJson{$container_id}{literal} = new functio
     this.oAutoComp.delimChar = ",";
     this.oAutoComp.minQueryLength = 1;
     this.oAutoComp.maxCacheEntries = 60;
-    this.oAutoComp.maxResultsDisplayed = {/literal}{$max_autocomplete_results}{literal};  
-    this.oAutoComp.formatResult = function(oResultItem, sQuery) {
+    this.oAutoComp.maxResultsDisplayed = {/literal}{$max_autocomplete_results}{literal}; 
+    this.oAutoComp.formatResult = function(oResultItem, sQuery, sResultMatch) {
         return oResultItem[1].Keyword;
     };
         
