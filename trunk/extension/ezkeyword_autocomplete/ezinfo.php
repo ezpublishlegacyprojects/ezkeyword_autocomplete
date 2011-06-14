@@ -34,7 +34,7 @@ class ezkeyword_autocompleteInfo
     {
         return array( 'Name' => "<a href=\"http://projects.ez.no/ezkeyword_autocomplete\">eZ Keyword Autocomplete</a> extension",
                       'Version' => "1.0",
-                      'Copyright' => "Copyright (C) 1999-2008 eZ systems AS / nfrp<span class=\"spamfilter\">SPAMFILTER</span>@ez.no",
+                      'Copyright' => "Copyright (C) 1999-2011 eZ systems AS / nfrp<span class=\"spamfilter\">SPAMFILTER</span>@ez.no",
                       'License' => "GNU General Public License v2.0"
                       );
     }
